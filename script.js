@@ -1,10 +1,11 @@
 let finalResult; // Declaring a variable outside a function makes it global, allowing reuse across function calls.
-let computerMove = '';
+
 
 function pickComputerMove() {
 
     const randomNumber = Math.random();
-    
+
+    let computerMove = '';
 
     if (randomNumber >= 0 && randomNumber < 1 / 3) {
         computerMove = 'rock';
@@ -14,12 +15,12 @@ function pickComputerMove() {
         computerMove = 'scissors';
     }    
 
-    console.log(computerMove);
+    return computerMove;
 };
 
 function playGameRock() {
   
-    pickComputerMove();
+    const computerMove = pickComputerMove();
 
     let result = '';
     if (computerMove === 'rock'){
@@ -36,13 +37,13 @@ function playGameRock() {
     }
     
     finalResult.innerHTML = `You picked rock. Computer picked ${computerMove}. ${result}`;
-
+ 
 };
 
 
 
 function playGamePaper() {
-    pickComputerMove();
+    const computerMove = pickComputerMove();
     
     let result = '';
     if (computerMove === 'rock'){
@@ -66,7 +67,7 @@ function playGamePaper() {
 
 
 function playGameScissors() {
-    pickComputerMove();
+    const computerMove = pickComputerMove();
     
     let result = '';
     if (computerMove === 'rock'){
