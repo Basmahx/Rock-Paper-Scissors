@@ -1,5 +1,11 @@
 let finalResult; // Declaring a variable outside a function makes it global, allowing reuse across function calls.
 
+const score = {
+
+    wins: 0,
+    losses: 0,
+    ties: 0
+};
 
 function pickComputerMove() {
 
@@ -55,10 +61,30 @@ function playGame(playerMove) {
         finalResult = document.createElement("h3");
         document.body.appendChild(finalResult);
     }
+
+    if (result === 'You win.') {
+        score.wins++;
+    } else if (result === 'You lose.') {
+        score.losses++;
+    } else if (result === 'Tie.' ) {
+        score.ties++;
+    }
     
-    finalResult.innerHTML = `You picked ${playerMove}. Computer picked ${computerMove}. ${result}`;
+    finalResult.innerHTML = `You picked ${playerMove}. Computer picked ${computerMove}. ${result}<br>
+    Wins: ${score.wins}<br> Losses: ${score.losses}<br> Ties: ${score.ties}`;
  
 };
+
+function resetScore() {
+    score.wins = 0;
+    score.losses = 0;
+    score.ties = 0;
+
+    if (finalResult) {
+        finalResult.innerHTML = '';
+ 
+    }
+}
 
 
 function resetFinalResult() {
